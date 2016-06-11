@@ -10,7 +10,7 @@ class memcached (
     'ubuntu'  => 'memcache',
     'debian'  => 'nobody',
   },
-
+  $instances = {},
 ) {
 
   validate_bool($enabled)
@@ -72,4 +72,7 @@ class memcached (
     enable  => $enabled,
     require => File['/etc/init.d/memcached'],
   }
+
+  # Init extra instances
+  create_resources('memcached::instance', $instances)
 }
