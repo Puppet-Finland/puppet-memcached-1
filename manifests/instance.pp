@@ -14,8 +14,6 @@ define memcached::instance (
     fail('You must at least enter a port number')
   }
 
-  validate_re($port,'^112[0-9]{2}$')
-  validate_re($udp_port,'^112[0-9]{2}$')
   validate_re($ensure,'^present|file|absent$')
 
   # Newer versions of puppet use newer facts; use what we have
