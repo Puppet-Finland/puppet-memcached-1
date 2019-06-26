@@ -47,6 +47,11 @@ class memcached (
         content => template('memcached/default_memcached.erb'),
         notify  => Service['memcached'],
       }
+      file { '/lib/systemd/system/memcached.service':
+        ensure  => absent,
+        require => Package['memcached'],
+        before  => Service['memcached'],
+      }
     }
   }
 
