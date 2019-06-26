@@ -44,7 +44,7 @@ define memcached::instance (
       }
     }
     'ubuntu': {
-      if $major_release !~ /^1[234]/ { fail('Ubuntu version 11.10 or lower not supported by this type.')}
+      if $major_release !~ /^1[2345678]/ { fail('Ubuntu version 11.10 or lower not supported by this type.')}
       file { "/etc/memcached_${name}.conf":
         ensure  => $ensure,
         owner   => 'root',
